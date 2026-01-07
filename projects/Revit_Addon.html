@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS Autonomous RC Car - Ty Snyder Robotics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="../index.html">Ty Snyder Robotics</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="../index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../resume.html">Resume</a></li>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Projects</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="gps-rc-car.html">GPS Autonomous RC Car</a></li>
+                        <li><a class="dropdown-item" href="Revit_Addon.html">Revit Addon</a></li>
+                        <li><a class="dropdown-item" href="project-3.html">Project Template 3</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Combat Robotics</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../combat-robots/robot-1.html">Combat Robot 1</a></li>
+                        <li><a class="dropdown-item" href="../combat-robots/robot-2.html">Combat Robot 2</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+    <header class="project-hero text-white text-center py-5" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/images/RevitPhoto.png') top/contain no-repeat;; padding-top: 8rem !important; padding-bottom: 8rem !important;">
+    <div class="container py-5">
+        <h1 class="display-3 fw-bold">Revit Addon</h1>
+        <p class="lead">Workflow Automation Addon</p>
+    </div>
+    </header>
+    <div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <h2 class="mb-4">Project Overview</h2>
+            <p class="lead">
+                What began as a pyRevit intern project to make simple tools that evolved into a comprehensive, 25,000-line C# enterprise solution for <strong>Intech Mechanical</strong> I have worked on for the last 2 years. 
+            </p>
+            <p>
+                After identifying limitations or speed concerns in existing Revit Addons, I rebuilt the toolset from the ground up to ensure stability, performance, and cross-version compatibility. The tool replaces expensive third-party plugins with custom tools built from direct industry insight.
+            </p>
+            
+            <h3 class="mt-4 h5">Key Technical Achievements:</h3>
+            <ul class="list-group list-group-flush mb-4">
+                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> <strong>Custom Collision Engine:</strong> Developed a shape collision system using implicit surfaces and Principal Component Analysis (PCA) for rotation correction.</li>
+                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> <strong>Multi-Version Architecture:</strong> Implemented a dependency network using abstract classes and multi-targeting to support various Revit API versions and .NET frameworks.</li>
+                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> <strong>Enterprise Scalability:</strong> Transitioned the codebase to a structured C# environment to prevent "addon-clash" and improve runtime efficiency.</li>
+            </ul>
+        </div>
+        
+        <div class="col-lg-4">
+            <div class="card shadow-sm border-0 bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">Technical Specs</h5>
+                    <hr>
+                    <p class="mb-1"><strong>Languages:</strong> C#, .NET</p>
+                    <p class="mb-1"><strong>Tools:</strong> Revit API, WPF, PCA Math</p>
+                    <p class="mb-1"><strong>Status:</strong> Active Internal Use</p>
+                    <p class="mb-0"><strong>Lines of Code:</strong> 25k+</p>
+                </div>
+            </div>
+            <div class="alert alert-info mt-3" role="alert">
+                <i class="fas fa-info-circle me-2"></i> <strong>Future Plans:</strong> Plans to develop hanger automation tools and integrate a licensing system for public release.
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="container my-5">
+    <div class="container my-5">
+        <div class="row mb-4 align-items-center">
+            <div class="col-md-8">
+                <h1>How to documentation</h1>
+            </div>
+            <div class="col-md-4 text-md-end">
+                <a href="assets/Revit_How_To_Doc.pdf" download class="btn btn-primary">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <object data="assets/Revit_How_To_Doc.pdf" type="application/pdf" class="pdf-viewer">
+                    <p>Your browser does not support PDF embedding. 
+                    <a href="assets/Revit_How_To_Doc.pdf">Click here to download the PDF.</a></p>
+                </object>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Ty Snyder Robotics</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/tyler-snyder1/" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/tysnyder70/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/Ty-Snyder" class="social-icon"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS Autonomous RC Car - Ty Snyder Robotics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="../index.html">Ty Snyder Robotics</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="../index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../resume.html">Resume</a></li>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Projects</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="gps-rc-car.html">GPS Autonomous RC Car</a></li>
+                        <li><a class="dropdown-item" href="Revit_Addon.html">Revit Addon</a></li>
+                        <li><a class="dropdown-item" href="project-3.html">Project Template 3</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Combat Robotics</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../combat-robots/robot-1.html">Combat Robot 1</a></li>
+                        <li><a class="dropdown-item" href="../combat-robots/robot-2.html">Combat Robot 2</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+    
+    <header class="project-hero text-white text-center py-5" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/images/FinishedRCCar.jpg') center/cover;">
+    <div class="container py-5">
+        <h1 class="display-3 fw-bold">GPS Autonomous RC Car</h1>
+        <p class="lead">Navigating waypoints using GPS and compass</p>
+        <a href="https://github.com/Ty-Snyder/Autonomous-RC-car" class="btn btn-outline-light btn-lg mt-3" target="_blank">
+            <i class="fab fa-github"></i> Github Documentation
+        </a>
+    </div>
+    </header>
+
+    <main class="container my-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Project Overview</h2>
+            <p>
+                This project transforms a old standard RC 1/16 chassis into a fully autonomous vehicle capable of navigating to specific GPS coordinates with Colin Malone. This project was made for a project based engineering course 2022. 
+                Using an <strong>Matek 743 Wing</strong> flight controller as the brain, with the mission planner software to make the car navigate a waypoint based path.
+            </p>
+
+            <h3>How it Works</h3>
+            <p>
+                The car operates on a "Drive-to-Target" logic. It retrieves its current position via the <strong>BN-220 GPS Module</strong> 
+                and determines its current orientation using built in magnetometer in the Matek 743 Wing. 
+                By calculating the bearing between the current location and the target, the Matek adjusts the steering servo and motor speed to reach the destination.
+            </p>
+
+            
+
+            <h3 class="mt-4">Key Features</h3>
+            <ul>
+                <li><strong>Waypoint Navigation:</strong> Input coordinates for the car to follow in sequence.</li>
+                <li><strong>FPV Camera:</strong> Long Range FPV allowed visual tracking autonomous mission at long distance.</li>
+                <li><strong>Failsafe Systems:</strong> Includes logic to stop the vehicle if GPS lock is lost and ability to take manual control if needed.</li>
+            </ul>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h4 class="card-title">Hardware Stack</h4>
+                    <ul class="list-group list-group-flush bg-transparent">
+                        <li class="list-group-item bg-transparent"><i class="fas fa-microchip me-2"></i> Matek 743 Wing</li>
+                        <li class="list-group-item bg-transparent"><i class="fas fa-satellite me-2"></i> BN-220 GPS Module</li>
+                        <li class="list-group-item bg-transparent"><i class="fas fa-wifi me-2"></i> 3DR Radio v1 (Communication with base station)</li>
+                        <li class="list-group-item bg-transparent"><i class="fas fa-broadcast-tower me-2"></i> FlySky Receiver (Manual Override)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+    <section class="container my-5">
+    <h2 class="text-center mb-5">Development Progression</h2>
+    
+    <div class="row align-items-center mb-5">
+        <div class="col-md-5">
+            <img src="assets\images\StockCar.jpg" class="img-fluid rounded shadow" alt="Stock RC Car">
+        </div>
+        <div class="col-md-7">
+            <h3 class="mt-3">Stage 1: Base Platform</h3>
+            <p>We started with a old standard 4WD RC chassis. We initially needed to repair issues with a broken transmission, deep clean wheels/suspension and making sure we got the car working well.</p>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5 flex-md-row-reverse">
+        <div class="col-md-5">
+            <img src="assets\images\Electronics.jpg" class="img-fluid rounded shadow" alt="Electronic Testing">
+        </div>
+        <div class="col-md-7">
+            <h3 class="mt-3">Stage 2: Electronics Testing</h3>
+            <p>During electronic testing, we integrated the <strong>Matek 743 Wing</strong> with the <strong>BN-220 GPS Module</strong> as well as hooked up the SBUS on the receiver. We also laser cut an acrylic top plate to help old the test components. We also were able to get our first drive tests</p>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5">
+        <div class="col-md-5">
+            <img src="assets\images\TopPlate.png" class="img-fluid rounded shadow" alt="Final Top Plate Design">
+        </div>
+        <div class="col-md-7">
+            <h3 class="mt-3">Stage 3: Custom CAD & Mounting</h3>
+            <p>To secure the electronics, we designed a custom 2 part top plate in CAD. We used a combination of laser cutting and 3D printing ot attach all the components as well as leaving extra mounting holes for future teams to work with the project.</p>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5 flex-md-row-reverse">
+        <div class="col-md-5">
+            <img src="assets/images/FinishedRCCar.jpg" class="img-fluid rounded shadow" alt="Finished Autonomous RC Car">
+        </div>
+        <div class="col-md-7">
+            <h3 class="mt-3">Stage 4: Final Assembly & Field Testing</h3>
+            <p>The final build features a clean wire management system and 3D-printed enclosures. When the car it on you can communication with it using the mission planner software to be able to tune setting like desired speed and pathing. This is also where we implement the manual override to be able to do course correction.</p>
+        </div>
+    </div>
+    <hr class="mb-5">
+    
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-10 text-center">
+            <h2 class="mb-4">Project in Action</h2>
+            <div class="ratio ratio-16x9 shadow rounded">
+                <video controls playsinline>
+                <source src="assets/videos/RCCar.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            </div>
+        </div>
+    </div>
+
+    <div class="row text-center">
+        <h2 class="mb-4">Project Documentation</h2>
+        
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <i class="fas fa-file-code fa-3x text-primary mb-3"></i>
+                    <h4>Mounting Sheet</h4>
+                    <p class="small">CAD drawing of the top mounting plate.</p>
+                    <a href="assets/RC Mounting Drawings.pdf" class="btn btn-outline-dark" target="_blank">Open PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <i class="fas fa-file-code fa-3x text-primary mb-3"></i>
+                    <h4>Electronics Diagram</h4>
+                    <p class="small">Electronics diagram for future reference.</p>
+                    <a href="assets/RC Wiring.pdf" class="btn btn-outline-dark" target="_blank">Open PDF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Ty Snyder Robotics</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/tyler-snyder1/" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/tysnyder70/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/Ty-Snyder" class="social-icon"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
