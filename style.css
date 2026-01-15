@@ -115,3 +115,113 @@ footer {
         height: 400px; 
     }
 }
+
+/* --- NEW HERO STYLES --- */
+/* Replacing the old image background with a solid/split design */
+.hero-split {
+    background-color: #212529; /* Matches Dark Navbar */
+    color: white;
+    padding: 80px 0;
+    min-height: 60vh; /* Ensures it takes up decent screen space */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle pattern overlay for the dark background (optional) */
+.hero-split::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+    background-size: 30px 30px;
+    pointer-events: none;
+}
+
+.text-light-opacity {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Headshot Styling */
+.hero-headshot {
+    width: 350px;       /* Set a fixed size */
+    height: 350px;      /* Match width for perfect circle */
+    object-fit: cover;  /* Ensures image doesn't stretch */
+    border: 8px solid rgba(255, 255, 255, 0.1); /* Subtle ring */
+    box-shadow: 0 0 30px rgba(0,0,0,0.5); /* Deep shadow for depth */
+    transition: transform 0.3s ease;
+    transform: scale(1.4); 
+}
+
+/* Mobile adjustments for headshot */
+@media (max-width: 768px) {
+    .hero-split {
+        text-align: center;
+        padding: 50px 0;
+    }
+    
+    .hero-headshot {
+        width: 250px;
+        height: 250px;
+        margin-bottom: 30px;
+    }
+    
+    /* Center the buttons on mobile */
+    .hero-split .d-flex {
+        justify-content: center;
+    }
+}
+
+
+/* --- FEATURE SECTIONS --- */
+/* Hover effect for Project Cards */
+.project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Skill Icons */
+.fa-3x {
+    /* Ensures icons are consistent size */
+    font-size: 3em;
+}
+
+/* Philosophy Section Typography */
+.philosophy-text {
+    font-size: 1.25rem;       /* Slightly larger than normal text */
+    line-height: 1.8;         /* More spacing between lines makes it easier to read */
+    color: #495057;           /* Softer grey, not harsh black */
+    position: relative;
+    z-index: 1;
+}
+
+/* Optional: Mobile adjustment */
+@media (max-width: 768px) {
+    .philosophy-text {
+        font-size: 1.1rem;
+        text-align: left; /* Often easier to read left-aligned on phones */
+    }
+}
+
+/* Core Principles Text - Clean & Generic */
+.core-principles-text {
+    font-size: 1.05rem;       /* Normal readable size (not huge) */
+    line-height: 1.6;         /* Standard spacing */
+    color: #000000;           /* Pure black for maximum contrast */
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Generic, clean font */
+    font-weight: 400;         /* Normal weight */
+    text-align: left;         /* Standard reading alignment */
+}
+
+/* Optional: Keep it readable on mobile */
+@media (max-width: 768px) {
+    .core-principles-text {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+}
