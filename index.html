@@ -115,52 +115,64 @@
         </div>
     </section>
 
-    <section class="py-5">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center mb-4">
+    <section class="py-5 bg-light"> <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-5">
                 <h2 class="fw-bold mb-0">Featured Projects</h2>
             </div>
             <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card h-100 project-card">
-                        <div class="card-header bg-dark text-white">Robotics</div>
-                        <div class="card-body">
-                            <h5 class="card-title">Quadruped V1 & V2</h5>
-                            <p class="card-text">
-                                A fully custom robot dog exploring inverse kinematics. V1 completed in 2024, with small upgrade to leg design in 2025. 
-                                V2 is currently in development with improved gait planning and feedback system.
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch"> <div class="card h-100 project-card">
+                        <div class="card-header bg-dark text-white fw-bold">
+                            <i class="fas fa-robot me-2 text-primary"></i>Robotics
+                        </div>
+                        
+                        <div class="project-img-container">
+                            <img src="projects/assets/images/quadruped.jpg" alt="Quadruped Robot">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Quadruped V1 & V2</h5>
+                            <p class="card-text flex-grow-1"> A fully custom robot dog exploring inverse kinematics. V1 completed in 2024. V2 currently in development with improved gait planning and feedback systems.
                             </p>
-                            <a href="projects/quadruped_V1.html" class="btn btn-outline-primary btn-sm stretched-link">View V1 info</a>
+                            <a href="projects/quadruped_V1.html" class="btn btn-outline-primary stretched-link mt-3">View V1 info</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                     <div class="card h-100 project-card">
-                        <div class="card-header bg-dark text-white">Automation</div>
-                        <div class="card-body">
-                            <h5 class="card-title">GPS Autonomous RC Car</h5>
-                            <p class="card-text">
-                                A self-driving vehicle using magnetometer fusion and GPS waypoints for autonomous navigation.
+                        <div class="card-header bg-dark text-white fw-bold">
+                            <i class="fas fa-satellite-dish me-2 text-success"></i>Automation
+                        </div>
+                        <div class="project-img-container">
+                            <img src="projects/assets/images/FinishedRCCar.jpg" alt="Autonomous Car">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">GPS Autonomous RC Car</h5>
+                            <p class="card-text flex-grow-1">
+                                A self-driving vehicle designed from the ground up using magnetometer fusion and GPS waypoints for autonomous outdoor navigation.
                             </p>
-                            <a href="projects/gps-rc-car.html" class="btn btn-outline-primary btn-sm stretched-link">More Info</a>
+                            <a href="projects/gps-rc-car.html" class="btn btn-outline-primary stretched-link mt-3">More Info</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card h-100 project-card">
-                        <div class="card-header bg-dark text-white">Software</div>
-                        <div class="card-body">
-                            <h5 class="card-title">Revit Automation Addon</h5>
-                            <p class="card-text">
-                                A C# application built from scratch to automate repetitive BIM modeling tasks, increasing engineering efficiency.
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch offset-md-3 offset-lg-0"> <div class="card h-100 project-card">
+                        <div class="card-header bg-dark text-white fw-bold">
+                            <i class="fas fa-laptop-code me-2 text-danger"></i>Software
+                        </div>
+                        <div class="project-img-container">
+                            <img src="projects/assets/images/RevitCode.png" alt="Revit API Code">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Revit Automation Addon</h5>
+                            <p class="card-text flex-grow-1">
+                                A C# application built using the Revit API to automate repetitive BIM modeling tasks, significantly increasing engineering drawing efficiency.
                             </p>
-                            <a href="projects/Revit_Addon.html" class="btn btn-outline-primary btn-sm stretched-link">More info</a>
+                            <a href="projects/Revit_Addon.html" class="btn btn-outline-primary stretched-link mt-3">More info</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <section id="research" class="py-5 bg-light">
         <div class="container">
             <h2 class="fw-bold mb-5 text-center">Research & Professional Experience</h2>
@@ -213,7 +225,7 @@
                     
                     <p class="mb-0 core-principles-text">
                         I actively seek out projects that push me out of my comfort zone, but I do so strategically. 
-                        My approach is to find a balance between the <strong>known</strong> and the <strong>unknown</strong> using 
+                        My approach is to find a balance between the <strong>known</strong> and the <strong>unknown</strong> +using 
                         skills I’ve mastered to anchor myself while diving headfirst into completely new challenges. 
                         This allows me to tackle complex problems without being overwhelmed. 
                         <br><br>
@@ -229,30 +241,56 @@
 
     <section class="py-5 bg-dark text-white position-relative overflow-hidden">
         <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(255,0,0,0.05); pointer-events: none;"></div>
-        
+
         <div class="container position-relative z-1">
             <div class="row align-items-center">
-                <div class="col-md-7">
+                
+                <div class="col-lg-9 col-md-12 mb-5 mb-lg-0"> 
+                    
                     <span class="text-danger fw-bold text-uppercase ls-1">Project Manager @ Combat Robotics at Berkeley</span>
                     <h2 class="display-5 fw-bold mt-2">Combat Robotics</h2>
-                    <p class="lead text-light-opacity">
-                        I manage budget allocation, timelines, and manufacturing for the team. 
+                    <p class="lead text-light-opacity mb-5" style="max-width: 90%;"> I manage budget allocation, timelines, and manufacturing for the team. 
                         Personally designing <strong>Malware (30lb)</strong> and <strong>Executioner (15lb)</strong>.
                     </p>
-                    <div class="mt-4">
-                        <a href="combat-robots/Malware.html" class="btn btn-danger btn-lg me-2">See Malware</a>
-                        <a href="combat-robots/Executioner.html" class="btn btn-outline-light btn-lg">See Executioner</a>
-                    </div>
-                </div>
-                <div class="col-md-5 mt-4 mt-md-0 text-center">
-                    <div class="p-5 border border-secondary rounded-circle d-inline-block bg-black">
-                        <i class="fas fa-robot fa-5x text-danger"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
+                    <div class="row g-4">
+                        
+                        <div class="col-md-6">
+                            <a href="combat-robots/Malware.html" class="combat-bot-link">
+                                <div class="combat-img-wrapper">
+                                    <img src="combat-robots/assets/images/MalwareAir.jpeg" alt="Malware Combat Robot">
+                                </div>
+                                <div class="combat-bot-caption">
+                                    <span class="combat-bot-name">Malware (30lb)</span>
+                                    <span class="combat-fake-btn">View Project <i class="fas fa-arrow-right ms-1"></i></span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-6">
+                            <a href="combat-robots/Executioner.html" class="combat-bot-link">
+                                <div class="combat-img-wrapper">
+                                    <img src="combat-robots/assets/images/ExecutionerTop.jpg" alt="Executioner Combat Robot">
+                                </div>
+                                <div class="combat-bot-caption">
+                                    <span class="combat-bot-name">Executioner (15lb)</span>
+                                    <span class="combat-fake-btn">View Project <i class="fas fa-arrow-right ms-1"></i></span>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 d-none d-lg-block text-center">
+                    <div class="p-5 border border-secondary rounded-circle d-inline-block bg-black position-relative" style="box-shadow: 0 0 30px rgba(0,0,0,0.5);">
+                        <i class="fas fa-robot fa-6x text-danger"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div> 
+    </section>
     <footer>
         <div class="container">
             <p>&copy; 2026 Ty Snyder Robotics</p>

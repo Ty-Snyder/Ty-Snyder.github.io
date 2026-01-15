@@ -223,3 +223,156 @@ footer {
         padding: 0 10px;
     }
 }
+
+/* 1. Define a container for the image with a fixed height */
+.project-img-container {
+    height: 230px; /* Adjust this value to make images taller or shorter */
+    width: 100%;
+    overflow: hidden; /* Ensures the zoom effect stays within the box */
+    position: relative;
+    border-bottom: 1px solid rgba(0,0,0,0.125); /* Matches Bootstrap card border */
+}
+
+/* 2. Style the actual image to fill the container neatly */
+.project-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This is magic: it crops the image to fill the space without stretching */
+    object-position: center 30%; /* Focus on the center of the image */
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth zoom transition */
+}
+
+/* 3. The Hover Effect: Zoom the image slightly when hovering the card */
+.project-card:hover .project-img-container img {
+    transform: scale(1.07); /* Subtle zoom in */
+}
+
+/* Optional: Add a slight lift effect to the whole card on hover */
+.project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none !important; /* Removing default border for a cleaner look with shadow */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05) !important; /* Subtle default shadow */
+}
+
+.project-card:hover {
+    transform: translateY(-5px); /* Move up slightly */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15) !important; /* Deeper shadow */
+}
+
+/* Ensure card headers have rounded top corners to match card */
+.card-header:first-child {
+    border-radius: calc(var(--bs-card-border-radius) - 1px) calc(var(--bs-card-border-radius) - 1px) 0 0;
+}
+
+.combat-img-wrapper {
+    position: relative;
+    width: 100%;
+    /* Adjust height to preference, 300px usually looks good for a 2-column layout */
+    height: 300px; 
+    overflow: hidden;
+    border-radius: var(--bs-border-radius-lg); /* Matches Bootstrap large radius */
+    /* Subtle red border to match theme */
+    border: 2px solid rgba(220, 53, 69, 0.25); 
+    /* Deeper shadow for dark mode */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+/* The actual image inside */
+.combat-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    /* Crucial: crops image to fill the box without stretching */
+    object-fit: cover; 
+    object-position: center;
+    transition: transform 0.5s ease;
+}
+
+/* Hover Effects */
+.combat-img-wrapper:hover {
+    /* Brighten border to full red on hover */
+    border-color: var(--bs-danger);
+    /* Add a subtle red glow to the shadow */
+    box-shadow: 0 0.5rem 1.5rem rgba(220, 53, 69, 0.3); 
+}
+
+.combat-img-wrapper:hover img {
+    /* Slight zoom effect */
+    transform: scale(1.05); 
+}
+
+/* Optional caption styling underneath */
+.combat-img-caption {
+    text-align: center;
+    margin-top: 0.75rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.combat-bot-link {
+    display: block; 
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.combat-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 240px; /* Increased height since the width is now larger */
+    overflow: hidden;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.1); 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.combat-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transition: transform 0.5s ease;
+}
+
+/* Caption Text Styling */
+.combat-bot-caption {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.combat-bot-name {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.combat-fake-btn {
+    font-size: 0.85rem;
+    margin-top: 4px;
+    display: inline-block;
+    color: rgba(255,255,255,0.7);
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 2px;
+    transition: color 0.3s;
+}
+
+/* Hover Effects */
+.combat-bot-link:hover .combat-img-wrapper {
+    border-color: var(--bs-danger); 
+    box-shadow: 0 8px 15px rgba(220, 53, 69, 0.4); 
+}
+
+.combat-bot-link:hover .combat-img-wrapper img {
+    transform: scale(1.08); 
+}
+
+.combat-bot-link:hover .combat-fake-btn {
+    color: var(--bs-danger); 
+    border-color: var(--bs-danger);
+}
