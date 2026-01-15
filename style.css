@@ -75,3 +75,43 @@ footer {
 .bg-light {
     background-color: #f1f3f5 !important;
 }
+
+/* Update your existing .card rule in style.css */
+.card {
+    border-radius: 12px;
+    overflow: hidden; /* This keeps the table/header inside the rounded border */
+    border: 1px solid rgba(0,0,0,0.125); /* Ensures the border is crisp */
+}
+
+/* Optional: Make the table headers look a bit more like your old list items */
+.table th {
+    font-weight: 600;
+    color: #495057;
+    border-right: 1px solid #dee2e6; /* Adds a vertical separator for a technical look */
+}
+
+/* Optional: Darken the caption background for better readability */
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    padding: 10px;
+    bottom: 20px;
+}
+/* Carousel Customization */
+.carousel-custom-img {
+    /* 1. Make it taller */
+    height: 650px; /* Increased from 500px to 650px */
+    width: 100%;
+    
+    /* 2. Prevent stretching */
+    object-fit: cover; /* This crops the edges instead of squishing the image */
+    object-position: center; /* Centers the image so you don't lose the middle */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .carousel-custom-img {
+        /* On phones, 650px is too tall, so we shrink it back down */
+        height: 400px; 
+    }
+}
