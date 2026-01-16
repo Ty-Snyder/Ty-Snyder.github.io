@@ -89,6 +89,121 @@
         </div>
     </div>
 </div>
+<div class="container my-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Custom Collision Engine Architecture for simple meshes</h2>
+        <p class="lead text-muted w-75 mx-auto">
+            Revit's native api collision engine did not have the ability to work with certain element types and is slow. 
+            My main use case for this system if for sleeve placement at intersection between walls and pipes/duct.
+            I realized due to the simplistic nature of the shapes you don't need to do complicated array triangle intersection method like the Möller–Trumbore intersection algorithm. 
+            But at the same time due to long sloped pipes I cant just do box box intersection I wanted something in between that is accurate and fast.
+        </p>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; font-weight: bold; font-size: 1.2rem;">01</div>
+                        <h4 class="card-title mb-0">Geometry Extraction</h4>
+                    </div>
+                    <p class="card-text text-secondary">
+                        Instead of loading heavy Revit solid geometry, the engine extracts a simplified point and vertices representation of the target elements. 
+                        This drastically reduces memory overhead while also allowing me to build the shapes in a thread safe way to allow multi threading on the intersection process. 
+                        Due to the way Revit is programed you can not make multiple calls to the api simultaneously making multithreading straight from the api impossible. 
+                        Past this point the process is all multithreaded until needing to place the sleeves back in Revit. 
+                        Additionally for walls I build them to only use the mesh of the outer drywall on both sides if its not a solid wall which is important for not putting sleeves on in wall pipes and not putting a sleeve penetrating both sides of the wall when not needed.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; font-weight: bold; font-size: 1.2rem;">02</div>
+                        <h4 class="card-title mb-0">PCA Orientation</h4>
+                    </div>
+                    <p class="card-text text-secondary">
+                        Using Principal Component Analysis (PCA), the system calculates the covariance matrix of the point cloud to determine the primary eigenvectors. 
+                        This allows the engine to mathematically understand the "natural" rotation of an object (e.g., the long axis of a pipe) without manual user input. 
+                        This is able to generate a bounding box which is able to be much better fitting on the shape due to the rotation then a standard x,y,z basis bounding box is able to.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; font-weight: bold; font-size: 1.2rem;">03</div>
+                        <h4 class="card-title mb-0">Spacial Partitioning</h4>
+                    </div>
+                    <p class="card-text text-secondary">
+                        To not do more work then needed then form a 3d grid of squares adding with both a list of walls and list of pipes/duct. 
+                        Due to making all the pipes place in the partition first as we add the walls we check if the partition contains any pipes and if it does we add that to a list of partitions to actually run the intersection algorithm on. 
+                        This prevents the need to check objects that are not close together greatly increasing the speed of the tool.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; font-weight: bold; font-size: 1.2rem;">04</div>
+                        <h4 class="card-title mb-0">Implicit Surface Calculation</h4>
+                    </div>
+                    <p class="card-text text-secondary">
+                        I then go put a multi thread each partition and check if the bounding box has any overlap. If they do I use the values from the basic mesh and plugs the values into an implicate surface formula for a rectangle with rotation. 
+                        An implicate surface is a 3 dimension mathematical formula where you input an x,y and z and if inside the object you get a negative value and positive outside which means if you are on the object you can get 0.
+                        You can also use marching squares algorithm to convert the implicate surface back into a mesh which was the original method to generate the final object by simply run bot implicate surface equations on a point and if both are negative you know you are inside the intersection.
+                        Though due to the implicate surface being an approximation of round pipe or duct or if there was any more complicated fitting the algorithm would fail.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; font-weight: bold; font-size: 1.2rem;">05</div>
+                        <h4 class="card-title mb-0">Forming Intersection Mesh</h4>
+                    </div>
+                    <p class="card-text text-secondary">
+                        Taking advantage of walls always being rectangular the implicate surface always matched them very closely. 
+                        I can then use the mesh points of the pipe/duct and check to see if they are inside the wall. 
+                        Due to an edge case I also needed to run a plane vertices intersection and add that to the final mesh in case mesh details are on both sides of the wall and vertices run through the wall.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; font-weight: bold; font-size: 1.2rem;">06</div>
+                        <h4 class="card-title mb-0">Final Intersection</h4>
+                    </div>
+                    <p class="card-text text-secondary">
+                        Due to sleeves always being in orientation with the wall I project the mesh points a 2d plane in line with the wall then run a lease squares for both a circle and square then compare the R values to find if I should use a square or circle sleeve. 
+                        All that is left to do is exit the multi thread and go through a list of sleeves to place. 
+                        This algorithm was able to place 200 sleeves on a large project in 12 minutes. 
+                        Which most of that time is the placing of the sleeves due to revit being single threaded. 
+                        Compared to other softwares we compared it to took an hour+ to place the same 200 sleeves and didn't have features like proper wall penetration markers, or any functionality for duct work and fittings.
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 <hr class="container my-5">
     <div class="container my-5">
