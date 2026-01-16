@@ -161,9 +161,9 @@
                     </div>
                     <p class="card-text text-secondary">
                         I then go put a multi thread each partition and check if the bounding box has any overlap. If they do I use the values from the basic mesh and plugs the values into an implicate surface formula for a rectangle with rotation. 
-                        An implicate surface is a 3 dimension mathematical formula where you input an x,y and z and if inside the object you get a negative value and positive outside which means if you are on the object you can get 0.
-                        You can also use marching squares algorithm to convert the implicate surface back into a mesh which was the original method to generate the final object by simply run bot implicate surface equations on a point and if both are negative you know you are inside the intersection.
-                        Though due to the implicate surface being an approximation of round pipe or duct or if there was any more complicated fitting the algorithm would fail.
+                        An implicit surface is a 3 dimension mathematical formula where you input an x,y and z and if inside the object you get a negative value and positive outside which means if you are on the object you can get 0.
+                        You can also use marching squares algorithm to convert the implicit surface back into a mesh which was the original method to generate the final object by simply run bot implicate surface equations on a point and if both are negative you know you are inside the intersection.
+                        Though due to the implicit surface being an approximation of round pipe or duct or if there was any more complicated fitting the algorithm would fail.
                     </p>
                 </div>
             </div>
@@ -177,7 +177,7 @@
                         <h4 class="card-title mb-0">Forming Intersection Mesh</h4>
                     </div>
                     <p class="card-text text-secondary">
-                        Taking advantage of walls always being rectangular the implicate surface always matched them very closely. 
+                        Taking advantage of walls always being rectangular the implicit surface always matched them very closely. 
                         I can then use the mesh points of the pipe/duct and check to see if they are inside the wall. 
                         Due to an edge case I also needed to run a plane vertices intersection and add that to the final mesh in case mesh details are on both sides of the wall and vertices run through the wall.
                     </p>
@@ -193,7 +193,7 @@
                         <h4 class="card-title mb-0">Final Intersection</h4>
                     </div>
                     <p class="card-text text-secondary">
-                        Due to sleeves always being in orientation with the wall I project the mesh points a 2d plane in line with the wall then run a lease squares for both a circle and square then compare the R values to find if I should use a square or circle sleeve. 
+                        Due to sleeves always being in orientation with the wall I project the mesh points a 2d plane in line with the wall then run a least squares optimization for both a circle and square then compare the R values to find if I should use a square or circle sleeve. 
                         All that is left to do is exit the multi thread and go through a list of sleeves to place. 
                         This algorithm was able to place 200 sleeves on a large project in 12 minutes. 
                         Which most of that time is the placing of the sleeves due to revit being single threaded. 
