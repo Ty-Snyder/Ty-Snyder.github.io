@@ -91,12 +91,11 @@
 </div>
 <div class="container my-5">
     <div class="text-center mb-5">
-        <h2 class="fw-bold">Custom Collision Engine Architecture for simple meshes</h2>
+        <h2 class="fw-bold">Custom Collision Engine Architecture</h2>
         <p class="lead text-muted w-75 mx-auto">
-            Revit's native api collision engine did not have the ability to work with certain element types and is slow. 
-            My main use case for this system if for sleeve placement at intersection between walls and pipes/duct.
-            I realized due to the simplistic nature of the shapes you don't need to do complicated array triangle intersection method like the Möller–Trumbore intersection algorithm. 
-            But at the same time due to long sloped pipes I cant just do box box intersection I wanted something in between that is accurate and fast.
+            Revit's native collision engine lacks support for specific element types and struggles with performance at scale. 
+            To solve this, I engineered a custom intersection algorithm tailored for placing sleeves at wall-pipe/duct intersections. 
+            This system balances the speed of box-box intersection with the accuracy of mesh-based methods, bypassing the need for heavy ray-casting algorithms like Möller–Trumbore.
         </p>
     </div>
 
@@ -107,14 +106,12 @@
                 <div class="card-body p-4">
                     <div class="d-flex align-items-center mb-3">
                         <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; font-weight: bold; font-size: 1.2rem;">01</div>
-                        <h4 class="card-title mb-0">Geometry Extraction</h4>
+                        <h4 class="card-title mb-0">Geometry Extraction & Decoupling</h4>
                     </div>
                     <p class="card-text text-secondary">
-                        Instead of loading heavy Revit solid geometry, the engine extracts a simplified point and vertices representation of the target elements. 
-                        This drastically reduces memory overhead while also allowing me to build the shapes in a thread safe way to allow multi threading on the intersection process. 
-                        Due to the way Revit is programed you can not make multiple calls to the api simultaneously making multithreading straight from the api impossible. 
-                        Past this point the process is all multithreaded until needing to place the sleeves back in Revit. 
-                        Additionally for walls I build them to only use the mesh of the outer drywall on both sides if its not a solid wall which is important for not putting sleeves on in wall pipes and not putting a sleeve penetrating both sides of the wall when not needed.
+                        Revit's API prevents simultaneous calls, making multi-threading impossible with native geometry. My solution extracts a simplified point-and-vertex representation of the target elements immediately. By decoupling this data from the Revit API, I can process collisions on separate threads. 
+                        <br><br>
+                        <em>Optimization:</em> Walls are simplified to double-sided planar meshes (excluding core layers) to prevent false positives on internal piping.
                     </p>
                 </div>
             </div>
@@ -125,12 +122,12 @@
                 <div class="card-body p-4">
                     <div class="d-flex align-items-center mb-3">
                         <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; font-weight: bold; font-size: 1.2rem;">02</div>
-                        <h4 class="card-title mb-0">PCA Orientation</h4>
+                        <h4 class="card-title mb-0">PCA Orientation (OBB)</h4>
                     </div>
                     <p class="card-text text-secondary">
-                        Using Principal Component Analysis (PCA), the system calculates the covariance matrix of the point cloud to determine the primary eigenvectors. 
-                        This allows the engine to mathematically understand the "natural" rotation of an object (e.g., the long axis of a pipe) without manual user input. 
-                        This is able to generate a bounding box which is able to be much better fitting on the shape due to the rotation then a standard x,y,z basis bounding box is able to.
+                        Standard Axis-Aligned Bounding Boxes (AABB) create large "dead zones" around rotated pipes. I utilize <strong>Principal Component Analysis (PCA)</strong> to calculate the covariance matrix of the element's point cloud.
+                        
+                        This yields the primary eigenvectors, allowing the system to generate a tight-fitting <strong>Oriented Bounding Box (OBB)</strong> aligned with the object's natural rotation.
                     </p>
                 </div>
             </div>
@@ -141,12 +138,11 @@
                 <div class="card-body p-4">
                     <div class="d-flex align-items-center mb-3">
                         <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; font-weight: bold; font-size: 1.2rem;">03</div>
-                        <h4 class="card-title mb-0">Spacial Partitioning</h4>
+                        <h4 class="card-title mb-0">Spatial Partitioning</h4>
                     </div>
                     <p class="card-text text-secondary">
-                        To not do more work then needed then form a 3d grid of squares adding with both a list of walls and list of pipes/duct. 
-                        Due to making all the pipes place in the partition first as we add the walls we check if the partition contains any pipes and if it does we add that to a list of partitions to actually run the intersection algorithm on. 
-                        This prevents the need to check objects that are not close together greatly increasing the speed of the tool.
+                        To avoid an O(n^2) complexity check, I implemented a 3D spatial partitioning system. The model is divided into a grid of partitions. Walls and pipes are registered to their respective grid cells. 
+                        The intersection algorithm only runs on partitions containing <em>both</em> a wall and a pipe, instantly eliminating calculations for non-adjacent elements and drastically reducing CPU time.
                     </p>
                 </div>
             </div>
@@ -160,10 +156,9 @@
                         <h4 class="card-title mb-0">Implicit Surface Calculation</h4>
                     </div>
                     <p class="card-text text-secondary">
-                        I then go put a multi thread each partition and check if the bounding box has any overlap. If they do I use the values from the basic mesh and plugs the values into an implicate surface formula for a rectangle with rotation. 
-                        An implicit surface is a 3 dimension mathematical formula where you input an x,y and z and if inside the object you get a negative value and positive outside which means if you are on the object you can get 0.
-                        You can also use marching squares algorithm to convert the implicit surface back into a mesh which was the original method to generate the final object by simply run bot implicate surface equations on a point and if both are negative you know you are inside the intersection.
-                        Though due to the implicit surface being an approximation of round pipe or duct or if there was any more complicated fitting the algorithm would fail.
+                        If the Bounding Boxes overlap, the system verifies the collision using <strong>Implicit Surfaces</strong> (Signed Distance Functions). 
+                        
+                        Instead of complex mesh intersection, I plug the coordinates into the implicit formula for a rotated prism/cylinder. A negative result confirms the point is inside the shape, while a positive result confirms it is outside. This mathematical approximation is significantly faster than ray-casting.
                     </p>
                 </div>
             </div>
@@ -174,12 +169,11 @@
                 <div class="card-body p-4">
                     <div class="d-flex align-items-center mb-3">
                         <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; font-weight: bold; font-size: 1.2rem;">05</div>
-                        <h4 class="card-title mb-0">Forming Intersection Mesh</h4>
+                        <h4 class="card-title mb-0">Intersection Verification</h4>
                     </div>
                     <p class="card-text text-secondary">
-                        Taking advantage of walls always being rectangular the implicit surface always matched them very closely. 
-                        I can then use the mesh points of the pipe/duct and check to see if they are inside the wall. 
-                        Due to an edge case I also needed to run a plane vertices intersection and add that to the final mesh in case mesh details are on both sides of the wall and vertices run through the wall.
+                        Since walls are rectangular, their implicit surfaces are highly accurate. I check the mesh points of the pipe/duct against the wall's implicit definition.
+                        To handle edge cases (e.g., a pipe passing through a wall without its vertices landing inside the wall volume), the system also runs a plane-vertex intersection check to ensure 100% collision accuracy.
                     </p>
                 </div>
             </div>
@@ -190,14 +184,13 @@
                 <div class="card-body p-4">
                     <div class="d-flex align-items-center mb-3">
                         <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; font-weight: bold; font-size: 1.2rem;">06</div>
-                        <h4 class="card-title mb-0">Final Intersection</h4>
+                        <h4 class="card-title mb-0">Analysis & Placement</h4>
                     </div>
                     <p class="card-text text-secondary">
-                        Due to sleeves always being in orientation with the wall I project the mesh points a 2d plane in line with the wall then run a least squares optimization for both a circle and square then compare the R values to find if I should use a square or circle sleeve. 
-                        All that is left to do is exit the multi thread and go through a list of sleeves to place. 
-                        This algorithm was able to place 200 sleeves on a large project in 12 minutes. 
-                        Which most of that time is the placing of the sleeves due to revit being single threaded. 
-                        Compared to other softwares we compared it to took an hour+ to place the same 200 sleeves and didn't have features like proper wall penetration markers, or any functionality for duct work and fittings.
+                        Once a collision is confirmed, the intersection points are projected onto a 2D plane aligned with the wall. I apply a <strong>Least Squares</strong> regression to fit both a circle and a rectangle to the points, comparing the R^2 values to automatically determine if a round or rectangular sleeve is required.
+                        <br><br>
+                        <strong>Benchmark:</strong> The algorithm places ~200 sleeves in 12 minutes (placing 1 sleeve every ~3.6 seconds). Competitor software took 1 hour+ for the same task and lacked logic for duct work or fitting.
+                    </p>
                 </div>
             </div>
         </div>

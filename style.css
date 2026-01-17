@@ -149,7 +149,7 @@ footer {
     border: 8px solid rgba(255, 255, 255, 0.1); /* Subtle ring */
     box-shadow: 0 0 30px rgba(0,0,0,0.5); /* Deep shadow for depth */
     transition: transform 0.3s ease;
-    transform: scale(1.4); 
+    transform: scale(1.1); 
 }
 
 /* Mobile adjustments for headshot */
