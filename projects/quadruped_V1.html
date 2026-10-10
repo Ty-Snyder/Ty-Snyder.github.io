@@ -13,25 +13,26 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="../index.html">Ty Snyder Robotics</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="../index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="../resume.html">Resume</a></li>
                 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Projects</a>
+                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projects</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="gps-rc-car.html">GPS Autonomous RC Car</a></li>
+                        <li><a class="dropdown-item" href="digital-guitar.html">Digital Electric Guitar</a></li>
+                        <li><a class="dropdown-item active" href="quadruped_V1.html">Quadruped V1</a></li>
                         <li><a class="dropdown-item" href="Revit_Addon.html">Revit Addon</a></li>
-                        <li><a class="dropdown-item" href="quadruped_V1.html">Quadruped V1</a></li>
+                        <li><a class="dropdown-item" href="gps-rc-car.html">GPS Autonomous RC Car</a></li>
                     </ul>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Combat Robotics</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Combat Robotics</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../combat-robots/Malware.html">Malware 30lb</a></li>
                         <li><a class="dropdown-item" href="../combat-robots/Executioner.html">Executioner 15lb</a></li>
@@ -47,7 +48,7 @@
     </div>
     </nav>
 
-    <header class="project-hero text-white text-center py-5" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/images/quadruped.jpg') top/cover;; padding-top: 10rem !important; padding-bottom: 10rem !important;">
+    <header class="project-hero text-white text-center py-5" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/images/quadruped.jpg') top/cover; padding-top: 10rem !important; padding-bottom: 10rem !important;">
     <div class="container py-5">
         <h1 class="display-3 fw-bold">Quadruped V1</h1>
         <p class="lead">Servo based legged robot</p>
@@ -59,14 +60,14 @@
         <div class="col-md-8">
             <h2>Project Overview</h2>
             <p>
-                A project I started in 2023 as a fully custom quadruped project. Uses a <strong>Raspberry Pi 4B</strong> as the brain, which uses the integrated bluetooth to connect to a generic controller. 
+                A fully custom quadruped robot I started in 2023. It uses a <strong>Raspberry Pi 4B</strong> as the brain, with its integrated Bluetooth connecting to a generic controller. 
             </p>
 
             <h3>How it Works</h3>
             <p>
-                The V1 quadruped works of a simple open loop control method which is planned to change to closed loop in V2. 
-                I use inverse kinematics along with with a time based path to send calculate the angle of each joint at the legs for any given moment. 
-                The <strong>Raspberry Pi</strong> then sends the desired position to the <strong>Pololu Mini Maestro</strong> which generates the PWM signal for the servo to go to the correct angle.
+                The V1 quadruped works off a simple open-loop control method, which will change to closed-loop control in V2. 
+                I use inverse kinematics along with a time-based path to calculate the angle of each leg joint at any given moment. 
+                The <strong>Raspberry Pi</strong> then sends the desired position to the <strong>Pololu Mini Maestro</strong>, which generates the PWM signal for the servo to go to the correct angle.
             </p>
         </div>
 
@@ -78,7 +79,7 @@
                         <li class="list-group-item bg-transparent"><i class="fas fa-microchip me-2"></i> Raspberry Pi 4B</li>
                         <li class="list-group-item bg-transparent"><i class="fas fa-cog me-2"></i> Pololu Mini Maestro 18-Channel</li>
                         <li class="list-group-item bg-transparent"><i class="fas fa-tools me-2"></i> DS3218 20KG Servo</li>
-                        <li class="list-group-item bg-transparent"><i class="fas fa-battery-three-quarters me-2"></i>Zeee 7.6V 8000mAh</li>
+                        <li class="list-group-item bg-transparent"><i class="fas fa-battery-three-quarters me-2"></i> Zeee 7.6V 8000mAh</li>
                     </ul>
                 </div>
             </div>
@@ -99,7 +100,7 @@
             While in the early stages of this project, I was working on a matrix inverse solution. 
             However, due to the specific joint system, I realized a simpler and more effective version was possible. 
             By using the two triangles formed by the leg segments, I solved for the end effector using basic trigonometry, 
-            the Law of Sines, and the Law of Cosines. The basic idea of the math is to take in an a1, a2, and a3 which are the leg segment lengths then an end effector x, y, and z and solve for the joint angles.
+            the Law of Sines, and the Law of Cosines. The basic idea of the math is to take in a1, a2, and a3, which are the leg segment lengths, then an end effector x, y, and z, and solve for the joint angles.
         </p>
         
         <div class="math-equations text-center my-4" style="font-size: 0.85em;">
@@ -118,34 +119,34 @@
 
     <div class="row align-items-center mb-5 flex-md-row-reverse">
         <div class="col-md-5">
-            <img src="assets\images\QuadrupedCode.png" class="img-fluid rounded shadow" alt="Software">
+            <img src="assets/images/QuadrupedCode.png" class="img-fluid rounded shadow" alt="Software">
         </div>
         <div class="col-md-7">
             <h3 class="mt-3">Software</h3>
             <p>
-                The software is all in Python on a raspberry Pi 4B. 
-                While the code is not super efficient it does work. 
-                I have learned a lot in the last couple years to greatly improve it and make it a closed loop system. 
-                V2 will use a Teensy 4.1 in C++ for a state machine and a raspberry pi for a higher level mission planner and basic control input.
+                The software is all in Python on a Raspberry Pi 4B. 
+                While the code is not super efficient, it does work. 
+                I have learned a lot in the last couple of years and plan to greatly improve it by making it a closed-loop system. 
+                V2 will use a Teensy 4.1 in C++ for a state machine and a Raspberry Pi for a higher level mission planner and basic control input.
             </p>
 
             <a href="https://github.com/Ty-Snyder/QuadrupedV1" class="btn btn-dark" target="_blank" rel="noopener noreferrer">
-                <i class="bi bi-github"></i> View Code on GitHub
+                <i class="fab fa-github me-1"></i> View Code on GitHub
             </a>
         </div>
     </div>
 
     <div class="row align-items-center mb-5">
         <div class="col-md-5">
-            <img src="assets\images\Quadruped CAD.png" class="img-fluid rounded shadow" alt="CAD quadruped">
+            <img src="assets/images/Quadruped CAD.png" class="img-fluid rounded shadow" alt="CAD quadruped">
         </div>
         <div class="col-md-7">
             <h3 class="mt-3">Hardware</h3>
             <p>
-                The entire quadruped is 3d printed by my own printer. I used primarily Autodesk Fusion for designing. 
-                While the body stayed consistent in design the legs went under multiple version to improve strength, connection with servo and more. 
-                One of the larger problems with the legs which is being worked on for version 2 is the feet due to being PLA had trouble with low friction coefficient as long as due to the feet having no squish made the bot walk on points. I plan to use TPU or a casted polyurethane to increase friction and allow squish to spread surface area slowing the tip of the bot. 
-                The new version will also focus better weight balancing.
+                The entire quadruped is 3D printed on my own printer. I used primarily Autodesk Fusion for designing. 
+                While the body stayed consistent in design, the legs went through multiple versions to improve strength, connection with the servos, and more. 
+                One of the larger problems with the legs, which is being worked on for version 2, is the feet: being PLA, they had a low friction coefficient, and with no squish, the bot walked on points. I plan to use TPU or cast polyurethane to increase friction and add squish that spreads out the contact area, slowing the tipping of the bot. 
+                The new version will also focus on better weight balancing.
             </p>
         </div>
     </div>
@@ -175,15 +176,14 @@
         <div class="container">
             <p>&copy; 2026 Ty Snyder Robotics</p>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/tyler-snyder1/" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/tysnyder70/" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="https://github.com/Ty-Snyder" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/tyler-snyder1/" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/tysnyder70/" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/Ty-Snyder" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 </html>

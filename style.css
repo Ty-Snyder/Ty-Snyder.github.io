@@ -1,10 +1,22 @@
 /* style.css */
+
+/* Light surface colors: one background color for every light section, no alternating */
+:root {
+    --surface: #e8eaec;       /* page background and all light sections */
+    --surface-card: #f3f4f5;  /* cards, tables, dropdowns (one step lighter so they stand out) */
+    --bs-body-bg: var(--surface-card);
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f8f9fa;
+    background-color: var(--surface);
+}
+
+.bg-white {
+    background-color: var(--surface) !important;
 }
 
 /* Navbar Customization */
@@ -21,16 +33,6 @@ body {
     color: #ffffff;
     text-decoration: underline;
     text-underline-offset: 5px;
-}
-
-/* Hero Section */
-.hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 100px 0;
-    text-align: center;
 }
 
 /* Footer Styling */
@@ -61,9 +63,11 @@ footer {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Adds a subtle "lift" effect */
 }
 
-/* Enhancing the technical spec card */
+/* Cards (consolidated) */
 .card {
     border-radius: 12px;
+    overflow: hidden; /* Keeps the table/header inside the rounded border */
+    border: 1px solid rgba(0,0,0,0.125);
 }
 
 .list-group-item {
@@ -71,63 +75,54 @@ footer {
     padding-left: 0;
 }
 
-/* Add a slight background to the overview to distinguish from white PDF section */
 .bg-light {
-    background-color: #f1f3f5 !important;
+    background-color: var(--surface) !important;
 }
 
-/* Update your existing .card rule in style.css */
-.card {
-    border-radius: 12px;
-    overflow: hidden; /* This keeps the table/header inside the rounded border */
-    border: 1px solid rgba(0,0,0,0.125); /* Ensures the border is crisp */
+/* Cards marked bg-light (e.g. hardware stack, spec boxes) still need to stand out from the page */
+.card.bg-light {
+    background-color: var(--surface-card) !important;
 }
 
-/* Optional: Make the table headers look a bit more like your old list items */
+/* Technical spec tables */
 .table th {
     font-weight: 600;
     color: #495057;
-    border-right: 1px solid #dee2e6; /* Adds a vertical separator for a technical look */
+    border-right: 1px solid #dee2e6; /* Vertical separator for a technical look */
 }
 
-/* Optional: Darken the caption background for better readability */
+/* Carousel Customization */
 .carousel-caption {
     background: rgba(0, 0, 0, 0.6);
     border-radius: 8px;
     padding: 10px;
     bottom: 20px;
 }
-/* Carousel Customization */
+
 .carousel-custom-img {
-    /* 1. Make it taller */
-    height: 650px; /* Increased from 500px to 650px */
+    height: 650px;
     width: 100%;
-    
-    /* 2. Prevent stretching */
-    object-fit: cover; /* This crops the edges instead of squishing the image */
-    object-position: center; /* Centers the image so you don't lose the middle */
+    object-fit: cover;       /* Crops instead of squishing */
+    object-position: center;
 }
 
-/* Mobile Responsiveness */
 @media (max-width: 768px) {
     .carousel-custom-img {
-        /* On phones, 650px is too tall, so we shrink it back down */
-        height: 400px; 
+        height: 400px;
     }
 }
 
-/* --- NEW HERO STYLES --- */
-/* Replacing the old image background with a solid/split design */
+/* --- HERO STYLES --- */
 .hero-split {
     background-color: #212529; /* Matches Dark Navbar */
     color: white;
     padding: 80px 0;
-    min-height: 60vh; /* Ensures it takes up decent screen space */
+    min-height: 60vh;
     position: relative;
     overflow: hidden;
 }
 
-/* Subtle pattern overlay for the dark background (optional) */
+/* Subtle pattern overlay for the dark background */
 .hero-split::before {
     content: "";
     position: absolute;
@@ -143,120 +138,81 @@ footer {
 
 /* Headshot Styling */
 .hero-headshot {
-    width: 350px;       /* Set a fixed size */
-    height: 350px;      /* Match width for perfect circle */
-    object-fit: cover;  /* Ensures image doesn't stretch */
-    border: 8px solid rgba(255, 255, 255, 0.1); /* Subtle ring */
-    box-shadow: 0 0 30px rgba(0,0,0,0.5); /* Deep shadow for depth */
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    object-position: center top; /* Portrait photo: keep the face in the circle */
+    border: 8px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
     transition: transform 0.3s ease;
-    transform: scale(1.1); 
+    transform: scale(1.1);
 }
 
-/* Mobile adjustments for headshot */
 @media (max-width: 768px) {
     .hero-split {
         text-align: center;
         padding: 50px 0;
     }
-    
+
     .hero-headshot {
         width: 250px;
         height: 250px;
         margin-bottom: 30px;
     }
-    
+
     /* Center the buttons on mobile */
     .hero-split .d-flex {
         justify-content: center;
     }
 }
 
-/* Hover effect for Project Cards */
-.project-card {
+/* Skill boxes - subtle lift to match project cards */
+.skill-box {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: none;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    background-color: var(--surface-card);
 }
 
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+.skill-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Skill Icons */
 .fa-3x {
-    /* Ensures icons are consistent size */
     font-size: 3em;
 }
 
-/* Philosophy Section Typography */
-.philosophy-text {
-    font-size: 1.25rem;       /* Slightly larger than normal text */
-    line-height: 1.8;         /* More spacing between lines makes it easier to read */
-    color: #495057;           /* Softer grey, not harsh black */
-    position: relative;
-    z-index: 1;
-}
-
-/* Optional: Mobile adjustment */
-@media (max-width: 768px) {
-    .philosophy-text {
-        font-size: 1.1rem;
-        text-align: left; /* Often easier to read left-aligned on phones */
-    }
-}
-
-/* Core Principles Text - Clean & Generic */
-.core-principles-text {
-    font-size: 1.05rem;       /* Normal readable size (not huge) */
-    line-height: 1.6;         /* Standard spacing */
-    color: #000000;           /* Pure black for maximum contrast */
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Generic, clean font */
-    font-weight: 400;         /* Normal weight */
-    text-align: left;         /* Standard reading alignment */
-}
-
-/* Optional: Keep it readable on mobile */
-@media (max-width: 768px) {
-    .core-principles-text {
-        font-size: 1rem;
-        padding: 0 10px;
-    }
-}
-
-/* 1. Define a container for the image with a fixed height */
-.project-img-container {
-    height: 230px; /* Adjust this value to make images taller or shorter */
-    width: 100%;
-    overflow: hidden; /* Ensures the zoom effect stays within the box */
-    position: relative;
-    border-bottom: 1px solid rgba(0,0,0,0.125); /* Matches Bootstrap card border */
-}
-
-/* 2. Style the actual image to fill the container neatly */
-.project-img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* This is magic: it crops the image to fill the space without stretching */
-    object-position: center 30%; /* Focus on the center of the image */
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth zoom transition */
-}
-
-/* 3. The Hover Effect: Zoom the image slightly when hovering the card */
-.project-card:hover .project-img-container img {
-    transform: scale(1.07); /* Subtle zoom in */
-}
-
-/* Optional: Add a slight lift effect to the whole card on hover */
+/* Project Cards (consolidated) */
 .project-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: none !important; /* Removing default border for a cleaner look with shadow */
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05) !important; /* Subtle default shadow */
+    border: none !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05) !important;
 }
 
 .project-card:hover {
-    transform: translateY(-5px); /* Move up slightly */
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15) !important; /* Deeper shadow */
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Project card image container */
+.project-img-container {
+    height: 230px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid rgba(0,0,0,0.125);
+}
+
+.project-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.project-card:hover .project-img-container img {
+    transform: scale(1.07);
 }
 
 /* Ensure card headers have rounded top corners to match card */
@@ -264,56 +220,30 @@ footer {
     border-radius: calc(var(--bs-card-border-radius) - 1px) calc(var(--bs-card-border-radius) - 1px) 0 0;
 }
 
-.combat-img-wrapper {
-    position: relative;
-    width: 100%;
-    /* Adjust height to preference, 300px usually looks good for a 2-column layout */
-    height: 300px; 
-    overflow: hidden;
-    border-radius: var(--bs-border-radius-lg); /* Matches Bootstrap large radius */
-    /* Subtle red border to match theme */
-    border: 2px solid rgba(220, 53, 69, 0.25); 
-    /* Deeper shadow for dark mode */
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
+/* Core Principles Typography */
+.core-principles-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #000000;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    text-align: left;
 }
 
-/* The actual image inside */
-.combat-img-wrapper img {
-    width: 100%;
-    height: 100%;
-    /* Crucial: crops image to fill the box without stretching */
-    object-fit: cover; 
-    object-position: center;
-    transition: transform 0.5s ease;
+@media (max-width: 768px) {
+    .core-principles-text {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
 }
 
-/* Hover Effects */
-.combat-img-wrapper:hover {
-    /* Brighten border to full red on hover */
-    border-color: var(--bs-danger);
-    /* Add a subtle red glow to the shadow */
-    box-shadow: 0 0.5rem 1.5rem rgba(220, 53, 69, 0.3); 
-}
-
-.combat-img-wrapper:hover img {
-    /* Slight zoom effect */
-    transform: scale(1.05); 
-}
-
-/* Optional caption styling underneath */
-.combat-img-caption {
-    text-align: center;
-    margin-top: 0.75rem;
-    font-weight: bold;
-    color: rgba(255, 255, 255, 0.7);
+/* --- COMBAT ROBOTICS SECTION --- */
+.ls-1 {
     letter-spacing: 1px;
-    text-transform: uppercase;
-    font-size: 0.9rem;
 }
 
 .combat-bot-link {
-    display: block; 
+    display: block;
     text-decoration: none;
     color: white;
     transition: transform 0.3s ease;
@@ -322,10 +252,10 @@ footer {
 .combat-img-wrapper {
     position: relative;
     width: 100%;
-    height: 240px; /* Increased height since the width is now larger */
+    height: 240px;
     overflow: hidden;
     border-radius: 12px;
-    border: 2px solid rgba(255, 255, 255, 0.1); 
+    border: 2px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
 }
@@ -333,7 +263,7 @@ footer {
 .combat-img-wrapper img {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
     transition: transform 0.5s ease;
 }
 
@@ -364,15 +294,179 @@ footer {
 
 /* Hover Effects */
 .combat-bot-link:hover .combat-img-wrapper {
-    border-color: var(--bs-danger); 
-    box-shadow: 0 8px 15px rgba(220, 53, 69, 0.4); 
+    border-color: var(--bs-danger);
+    box-shadow: 0 8px 15px rgba(220, 53, 69, 0.4);
 }
 
 .combat-bot-link:hover .combat-img-wrapper img {
-    transform: scale(1.08); 
+    transform: scale(1.08);
 }
 
 .combat-bot-link:hover .combat-fake-btn {
-    color: var(--bs-danger); 
+    color: var(--bs-danger);
     border-color: var(--bs-danger);
+}
+
+/* --- EARLIER WORK SECTION --- */
+/* Dark to continue from the Combat section into the footer; thin lines keep them distinct */
+.earlier-work,
+.earlier-work + footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Placeholder box for project images that haven't been added yet */
+.img-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 230px;
+    background-color: var(--surface-card);
+    border: 2px dashed #adb5bd;
+    color: #6c757d;
+}
+/* --- GUITAR FX DEMO (replica of the ESP32 control page, digital-guitar.html) --- */
+.fx-demo {
+    --fx-bg: #0c0c0c;
+    --fx-panel: #161616;
+    --fx-border: #252525;
+    --fx-acc: #e8572a;
+    --fx-text: #efefef;
+    --fx-muted: #8a8a8a;
+    max-width: 440px;
+    margin: 0 auto;
+    padding: 24px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--fx-bg);
+    color: var(--fx-text);
+    font-family: -apple-system, 'Segoe UI', sans-serif;
+    border-radius: 20px;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.25);
+}
+
+.fx-hdr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.fx-title {
+    font-size: 1.25rem;
+    letter-spacing: 3px;
+    color: var(--fx-acc);
+    font-weight: 700;
+}
+
+.fx-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #555;
+}
+
+.fx-card {
+    background: var(--fx-panel);
+    border: 1px solid var(--fx-border);
+    border-radius: 12px;
+    padding: 20px 18px;
+}
+
+.fx-ct {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--fx-muted);
+    margin-bottom: 16px;
+}
+
+.fx-hint {
+    font-size: 0.6rem;
+}
+
+.fx-ctrl {
+    margin-bottom: 18px;
+}
+
+.fx-ctrl:last-child {
+    margin-bottom: 0;
+}
+
+.fx-lbl {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.fx-val {
+    color: var(--fx-acc);
+    font-weight: 700;
+    font-size: 1.05rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.fx-demo input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    cursor: pointer;
+    background: linear-gradient(to right, var(--fx-acc) var(--p, 50%), var(--fx-border) var(--p, 50%));
+}
+
+.fx-demo input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #eee;
+    box-shadow: 0 0 0 3px var(--fx-acc), 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.fx-demo input[type=range]::-moz-range-thumb {
+    width: 26px;
+    height: 26px;
+    border: none;
+    border-radius: 50%;
+    background: #eee;
+    box-shadow: 0 0 0 3px var(--fx-acc), 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.fx-demo input[type=range]:focus-visible {
+    outline: 2px solid var(--fx-acc);
+    outline-offset: 6px;
+}
+
+.fx-flat {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #666;
+    letter-spacing: 1px;
+    margin-top: 6px;
+}
+
+.fx-status {
+    font-size: 0.72rem;
+    color: var(--fx-muted);
+    text-align: center;
+    padding: 4px 0;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .project-card,
+    .skill-box,
+    .combat-bot-link,
+    .combat-img-wrapper,
+    .combat-img-wrapper img,
+    .project-img-container img,
+    .hero-headshot {
+        transition: none !important;
+    }
 }

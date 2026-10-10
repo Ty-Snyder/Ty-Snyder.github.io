@@ -13,25 +13,26 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="../index.html">Ty Snyder Robotics</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="../index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="../resume.html">Resume</a></li>
                 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Projects</a>
+                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projects</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="gps-rc-car.html">GPS Autonomous RC Car</a></li>
-                        <li><a class="dropdown-item" href="Revit_Addon.html">Revit Addon</a></li>
+                        <li><a class="dropdown-item" href="digital-guitar.html">Digital Electric Guitar</a></li>
                         <li><a class="dropdown-item" href="quadruped_V1.html">Quadruped V1</a></li>
+                        <li><a class="dropdown-item active" href="Revit_Addon.html">Revit Addon</a></li>
+                        <li><a class="dropdown-item" href="gps-rc-car.html">GPS Autonomous RC Car</a></li>
                     </ul>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Combat Robotics</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Combat Robotics</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../combat-robots/Malware.html">Malware 30lb</a></li>
                         <li><a class="dropdown-item" href="../combat-robots/Executioner.html">Executioner 15lb</a></li>
@@ -47,28 +48,28 @@
     </div>
     </nav>
 
-    <header class="project-hero text-white text-center py-5" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/images/RevitPhoto.png') top/contain no-repeat;; padding-top: 8rem !important; padding-bottom: 8rem !important;">
+    <header class="project-hero text-white text-center py-5" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/images/RevitPhoto.png') top/contain no-repeat; padding-top: 8rem !important; padding-bottom: 8rem !important;">
     <div class="container py-5">
         <h1 class="display-3 fw-bold">Revit Addon</h1>
         <p class="lead">Workflow Automation Addon</p>
     </div>
     </header>
-    <div class="container my-5">
+    <main class="container my-5">
     <div class="row">
         <div class="col-lg-8">
             <h2 class="mb-4">Project Overview</h2>
             <p class="lead">
-                What began as a pyRevit intern project to make simple tools that evolved into a comprehensive, 25,000-line C# enterprise solution for <strong>Intech Mechanical</strong> I have worked on for the last 2 years. 
+                What began as an intern project building simple pyRevit tools evolved into a comprehensive, 30,000-line C# enterprise solution for <strong>Intech Mechanical</strong> that I worked on for over 3 years. 
             </p>
             <p>
-                After identifying limitations or speed concerns in existing Revit Addons, I rebuilt the toolset from the ground up to ensure stability, performance, and cross-version compatibility. The tool replaces expensive third-party plugins with custom tools built from direct industry insight.
+                After identifying limitations and speed concerns in existing Revit addons, I rebuilt the toolset from the ground up to ensure stability, performance, and cross-version compatibility. The tool replaces expensive third-party plugins with custom tools built from direct industry insight.
             </p>
             
-            <h3 class="mt-4 h5">Key Technical Achievements:</h3>
+            <h3 class="mt-4 h5">Key Technical Achievements</h3>
             <ul class="list-group list-group-flush mb-4">
                 <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> <strong>Custom Collision Engine:</strong> Developed a shape collision system using implicit surfaces and Principal Component Analysis (PCA) for rotation correction.</li>
                 <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> <strong>Multi-Version Architecture:</strong> Implemented a dependency network using abstract classes and multi-targeting to support various Revit API versions and .NET frameworks.</li>
-                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> <strong>Enterprise Scalability:</strong> Transitioned the codebase to a structured C# environment to prevent "addon-clash" and direct integration with Revits core API.</li>
+                <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> <strong>Enterprise Scalability:</strong> Transitioned the codebase to a structured C# environment to prevent "addon-clash" and allow direct integration with Revit's core API.</li>
             </ul>
         </div>
         
@@ -80,15 +81,15 @@
                     <p class="mb-1"><strong>Languages:</strong> C#, .NET</p>
                     <p class="mb-1"><strong>Tools:</strong> Revit API, WPF, PCA Math</p>
                     <p class="mb-1"><strong>Status:</strong> Active Internal Use</p>
-                    <p class="mb-0"><strong>Lines of Code:</strong> 25k+</p>
+                    <p class="mb-0"><strong>Lines of Code:</strong> 30k+</p>
                 </div>
             </div>
             <div class="alert alert-info mt-3" role="alert">
-                <i class="fas fa-info-circle me-2"></i> <strong>Future Plans:</strong> Plans to develop hanger automation tools and integrate a licensing system for public release.
+                <i class="fas fa-info-circle me-2"></i> <strong>Future Plans:</strong> Develop hanger automation tools and integrate a licensing system for public release.
             </div>
         </div>
     </div>
-</div>
+</main>
 <div class="container my-5">
     <div class="text-center mb-5">
         <h2 class="fw-bold">Custom Collision Engine Architecture</h2>
@@ -141,7 +142,7 @@
                         <h4 class="card-title mb-0">Spatial Partitioning</h4>
                     </div>
                     <p class="card-text text-secondary">
-                        To avoid an O(n^2) complexity check, I implemented a 3D spatial partitioning system. The model is divided into a grid of partitions. Walls and pipes are registered to their respective grid cells. 
+                        To avoid an O(n&sup2;) complexity check, I implemented a 3D spatial partitioning system. The model is divided into a grid of partitions. Walls and pipes are registered to their respective grid cells. 
                         The intersection algorithm only runs on partitions containing <em>both</em> a wall and a pipe, instantly eliminating calculations for non-adjacent elements and drastically reducing CPU time.
                     </p>
                 </div>
@@ -156,7 +157,7 @@
                         <h4 class="card-title mb-0">Implicit Surface Calculation</h4>
                     </div>
                     <p class="card-text text-secondary">
-                        If the Bounding Boxes overlap, the system verifies the collision using <strong>Implicit Surfaces</strong> (Signed Distance Functions). 
+                        If the bounding boxes overlap, the system verifies the collision using <strong>Implicit Surfaces</strong> (Signed Distance Functions). 
                         
                         Instead of complex mesh intersection, I plug the coordinates into the implicit formula for a rotated prism/cylinder. A negative result confirms the point is inside the shape, while a positive result confirms it is outside. This mathematical approximation is significantly faster than ray-casting.
                     </p>
@@ -187,9 +188,9 @@
                         <h4 class="card-title mb-0">Analysis & Placement</h4>
                     </div>
                     <p class="card-text text-secondary">
-                        Once a collision is confirmed, the intersection points are projected onto a 2D plane aligned with the wall. I apply a <strong>Least Squares</strong> regression to fit both a circle and a rectangle to the points, comparing the R^2 values to automatically determine if a round or rectangular sleeve is required.
+                        Once a collision is confirmed, the intersection points are projected onto a 2D plane aligned with the wall. I apply a <strong>Least Squares</strong> regression to fit both a circle and a rectangle to the points, comparing the R&sup2; values to automatically determine if a round or rectangular sleeve is required.
                         <br><br>
-                        <strong>Benchmark:</strong> The algorithm places ~200 sleeves in 12 minutes (placing 1 sleeve every ~3.6 seconds). Competitor software took 1 hour+ for the same task and lacked logic for duct work or fitting.
+                        <strong>Benchmark:</strong> The algorithm places ~200 sleeves in 12 minutes (placing 1 sleeve every ~3.6 seconds). Competitor software took over an hour for the same task and lacked logic for ductwork or fittings.
                     </p>
                 </div>
             </div>
@@ -202,7 +203,7 @@
     <div class="container my-5">
         <div class="row mb-4 align-items-center">
             <div class="col-md-8">
-                <h1>How to documentation</h1>
+                <h2>How-To Documentation</h2>
             </div>
             <div class="col-md-4 text-md-end">
                 <a href="assets/Revit_How_To_Doc.pdf" download class="btn btn-primary">
@@ -225,9 +226,9 @@
         <div class="container">
             <p>&copy; 2026 Ty Snyder Robotics</p>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/tyler-snyder1/" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/tysnyder70/" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="https://github.com/Ty-Snyder" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/tyler-snyder1/" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/tysnyder70/" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/Ty-Snyder" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </footer>

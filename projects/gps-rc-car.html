@@ -13,25 +13,26 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="../index.html">Ty Snyder Robotics</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="../index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="../resume.html">Resume</a></li>
                 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Projects</a>
+                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projects</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="gps-rc-car.html">GPS Autonomous RC Car</a></li>
-                        <li><a class="dropdown-item" href="Revit_Addon.html">Revit Addon</a></li>
+                        <li><a class="dropdown-item" href="digital-guitar.html">Digital Electric Guitar</a></li>
                         <li><a class="dropdown-item" href="quadruped_V1.html">Quadruped V1</a></li>
+                        <li><a class="dropdown-item" href="Revit_Addon.html">Revit Addon</a></li>
+                        <li><a class="dropdown-item active" href="gps-rc-car.html">GPS Autonomous RC Car</a></li>
                     </ul>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Combat Robotics</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Combat Robotics</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../combat-robots/Malware.html">Malware 30lb</a></li>
                         <li><a class="dropdown-item" href="../combat-robots/Executioner.html">Executioner 15lb</a></li>
@@ -52,8 +53,8 @@
     <div class="container py-5">
         <h1 class="display-3 fw-bold">GPS Autonomous RC Car</h1>
         <p class="lead">Navigating waypoints using GPS and compass</p>
-        <a href="https://github.com/Ty-Snyder/Autonomous-RC-car" class="btn btn-outline-light btn-lg mt-3" target="_blank">
-            <i class="fab fa-github"></i> Github Documentation
+        <a href="https://github.com/Ty-Snyder/Autonomous-RC-car" class="btn btn-outline-light btn-lg mt-3" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i> GitHub Documentation
         </a>
     </div>
     </header>
@@ -63,14 +64,14 @@
         <div class="col-md-8">
             <h2>Project Overview</h2>
             <p>
-                This project transforms a old standard RC 1/16 chassis into a fully autonomous vehicle capable of navigating to specific GPS coordinates with Colin Malone. This project was made for a project based engineering course fall 2022 and was finished early 2023. 
-                Using an <strong>Matek 743 Wing</strong> flight controller as the brain, with the mission planner software to make the car navigate a waypoint based path.
+                This project transforms an old standard 1/16 RC chassis into a fully autonomous vehicle capable of navigating to specific GPS coordinates, built with Colin Malone. This project was made for a project-based engineering course in fall 2022 and was finished in early 2023. 
+                It uses a <strong>Matek 743 Wing</strong> flight controller as the brain, with the Mission Planner software to make the car navigate a waypoint-based path.
             </p>
 
             <h3>How it Works</h3>
             <p>
                 The car operates on a "Drive-to-Target" logic. It retrieves its current position via the <strong>BN-220 GPS Module</strong> 
-                and determines its current orientation using built in magnetometer in the Matek 743 Wing. 
+                and determines its current orientation using the built-in magnetometer in the Matek 743 Wing. 
                 By calculating the bearing between the current location and the target, the Matek adjusts the steering servo and motor speed to reach the destination.
             </p>
 
@@ -79,8 +80,8 @@
             <h3 class="mt-4">Key Features</h3>
             <ul>
                 <li><strong>Waypoint Navigation:</strong> Input coordinates for the car to follow in sequence.</li>
-                <li><strong>FPV Camera:</strong> Long Range FPV allowed visual tracking autonomous mission at long distance.</li>
-                <li><strong>Failsafe Systems:</strong> Includes logic to stop the vehicle if GPS lock is lost and ability to take manual control if needed.</li>
+                <li><strong>FPV Camera:</strong> Long range FPV allowed visual tracking of autonomous missions at long distance.</li>
+                <li><strong>Failsafe Systems:</strong> Includes logic to stop the vehicle if GPS lock is lost and the ability to take manual control if needed.</li>
             </ul>
         </div>
 
@@ -104,31 +105,31 @@
     
     <div class="row align-items-center mb-5">
         <div class="col-md-5">
-            <img src="assets\images\StockCar.jpg" class="img-fluid rounded shadow" alt="Stock RC Car">
+            <img src="assets/images/StockCar.jpg" class="img-fluid rounded shadow" alt="Stock RC Car">
         </div>
         <div class="col-md-7">
             <h3 class="mt-3">Stage 1: Base Platform</h3>
-            <p>We started with a old standard 4WD RC chassis. We initially needed to repair issues with a broken transmission, deep clean wheels/suspension and making sure we got the car working well.</p>
+            <p>We started with an old standard 4WD RC chassis. We initially needed to repair a broken transmission, deep clean the wheels and suspension, and make sure the car was working well.</p>
         </div>
     </div>
 
     <div class="row align-items-center mb-5 flex-md-row-reverse">
         <div class="col-md-5">
-            <img src="assets\images\Electronics.jpg" class="img-fluid rounded shadow" alt="Electronic Testing">
+            <img src="assets/images/Electronics.jpg" class="img-fluid rounded shadow" alt="Electronic Testing">
         </div>
         <div class="col-md-7">
             <h3 class="mt-3">Stage 2: Electronics Testing</h3>
-            <p>During electronic testing, we integrated the <strong>Matek 743 Wing</strong> with the <strong>BN-220 GPS Module</strong> as well as hooked up the SBUS on the receiver. We also laser cut an acrylic top plate to help old the test components. We also were able to get our first drive tests</p>
+            <p>During electronics testing, we integrated the <strong>Matek 743 Wing</strong> with the <strong>BN-220 GPS Module</strong>, and hooked up SBUS on the receiver. We also laser cut an acrylic top plate to help hold the test components, and got our first drive tests in.</p>
         </div>
     </div>
 
     <div class="row align-items-center mb-5">
         <div class="col-md-5">
-            <img src="assets\images\TopPlate.png" class="img-fluid rounded shadow" alt="Final Top Plate Design">
+            <img src="assets/images/TopPlate.png" class="img-fluid rounded shadow" alt="Final Top Plate Design">
         </div>
         <div class="col-md-7">
             <h3 class="mt-3">Stage 3: Custom CAD & Mounting</h3>
-            <p>To secure the electronics, we designed a custom 2 part top plate in CAD. We used a combination of laser cutting and 3D printing ot attach all the components as well as leaving extra mounting holes for future teams to work with the project.</p>
+            <p>To secure the electronics, we designed a custom two-part top plate in CAD. We used a combination of laser cutting and 3D printing to attach all the components, and left extra mounting holes for future teams to work with the project.</p>
         </div>
     </div>
 
@@ -138,7 +139,7 @@
         </div>
         <div class="col-md-7">
             <h3 class="mt-3">Stage 4: Final Assembly & Field Testing</h3>
-            <p>The final build features a clean wire management system and 3D-printed enclosures. When the car it on you can communication with it using the mission planner software to be able to tune setting like desired speed and pathing. This is also where we implement the manual override to be able to do course correction.</p>
+            <p>The final build features a clean wire management system and 3D-printed enclosures. When the car is on, you can communicate with it using the Mission Planner software to tune settings like desired speed and pathing. This is also where we implemented the manual override to be able to do course correction.</p>
         </div>
     </div>
     <hr class="mb-5">
@@ -164,7 +165,7 @@
                     <i class="fas fa-file-code fa-3x text-primary mb-3"></i>
                     <h4>Mounting Sheet</h4>
                     <p class="small">CAD drawing of the top mounting plate.</p>
-                    <a href="assets/RC Mounting Drawings.pdf" class="btn btn-outline-dark" target="_blank">Open PDF</a>
+                    <a href="assets/RC Mounting Drawings.pdf" class="btn btn-outline-dark" target="_blank" rel="noopener noreferrer">Open PDF</a>
                 </div>
             </div>
         </div>
@@ -175,7 +176,7 @@
                     <i class="fas fa-file-code fa-3x text-primary mb-3"></i>
                     <h4>Electronics Diagram</h4>
                     <p class="small">Electronics diagram for future reference.</p>
-                    <a href="assets/RC Wiring.pdf" class="btn btn-outline-dark" target="_blank">Open PDF</a>
+                    <a href="assets/RC Wiring.pdf" class="btn btn-outline-dark" target="_blank" rel="noopener noreferrer">Open PDF</a>
                 </div>
             </div>
         </div>
@@ -185,9 +186,9 @@
         <div class="container">
             <p>&copy; 2026 Ty Snyder Robotics</p>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/tyler-snyder1/" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/tysnyder70/" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="https://github.com/Ty-Snyder" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/tyler-snyder1/" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/tysnyder70/" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/Ty-Snyder" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </footer>

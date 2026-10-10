@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Electric Guitar - Ty Snyder Robotics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="../index.html">Ty Snyder Robotics</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../resume.html">Resume</a></li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projects</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item active" href="digital-guitar.html">Digital Electric Guitar</a></li>
+                        <li><a class="dropdown-item" href="quadruped_V1.html">Quadruped V1</a></li>
+                        <li><a class="dropdown-item" href="Revit_Addon.html">Revit Addon</a></li>
+                        <li><a class="dropdown-item" href="gps-rc-car.html">GPS Autonomous RC Car</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Combat Robotics</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../combat-robots/Malware.html">Malware 30lb</a></li>
+                        <li><a class="dropdown-item" href="../combat-robots/Executioner.html">Executioner 15lb</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item ms-lg-3">
+                    <a class="btn btn-primary btn-sm mt-1 mt-lg-0" href="mailto:Tysnyder@berkeley.edu">
+                        <i class="fas fa-envelope me-2"></i>Contact
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+    <header class="project-hero text-white text-center py-5" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/images/GuitarFinished.jpg') center/cover; padding-top: 8rem !important; padding-bottom: 8rem !important;">
+    <div class="container py-5">
+        <h1 class="display-3 fw-bold">Digital Electric Guitar</h1>
+        <p class="lead">Real-time DSP guitar effects, controlled over Wi-Fi</p>
+    </div>
+    </header>
+
+    <main class="container my-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Project Overview</h2>
+            <p>
+                <!-- TODO: add the semester you took ME100 -->
+                This project started as a class project for <strong>ME100</strong>.
+                I took an electric guitar kit, removed the stock electronics, and replaced them with a <strong>Teensy 4.1</strong> that processes the guitar signal digitally.
+                Instead of a chain of physical pedals, any tone control or effect is just a function applied to the signal, and every function can be edited over Wi-Fi.
+            </p>
+
+            <h3>How it Works</h3>
+            <p>
+                The signal from the pickups (after the 5-position selector switch) goes into the Teensy, which runs a <strong>discrete Fourier transform</strong> to break the audio into its frequency components.
+                Once the signal is just frequencies and their weights, altering it is easy: apply gains to frequency ranges for bass, middle, and treble control, or write functions for almost any pedal effect or unusual alteration, then convert it back to audio and output it.
+                An <strong>ESP32</strong> hosts a control web page over Wi-Fi, so you connect to its network and adjust everything from your phone.
+            </p>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h4 class="card-title">Hardware Stack</h4>
+                    <ul class="list-group list-group-flush bg-transparent">
+                        <li class="list-group-item bg-transparent"><i class="fas fa-microchip me-2"></i> Teensy 4.1</li>
+                        <li class="list-group-item bg-transparent"><i class="fas fa-wave-square me-2"></i> Teensy Audio Shield</li>
+                        <li class="list-group-item bg-transparent"><i class="fas fa-wifi me-2"></i> Adafruit HUZZAH32 (ESP32)</li>
+                        <li class="list-group-item bg-transparent"><i class="fas fa-battery-three-quarters me-2"></i> 1S LiPo Battery</li>
+                        <li class="list-group-item bg-transparent"><i class="fas fa-guitar me-2"></i> Electric Guitar Kit, 5-Position Switch</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="alert alert-info mt-3" role="alert">
+                <i class="fas fa-info-circle me-2"></i> <strong>Status:</strong> Prototype complete. Version 2 PCB in layout.
+            </div>
+        </div>
+    </div>
+    </main>
+
+    <section class="container my-5">
+        <h2 class="text-center mb-2">Try the Interface</h2>
+        <p class="text-center text-muted mb-4">
+            A demo of the control page the ESP32 serves. On the real guitar, every slider change is sent to the Teensy; here it isn't connected to anything.
+        </p>
+
+        <div class="fx-demo">
+            <div class="fx-hdr">
+                <span class="fx-title">&#9889; GUITAR FX</span>
+                <span class="fx-dot" title="Not connected (demo)"></span>
+            </div>
+
+            <div class="fx-card">
+                <div class="fx-ct">Master</div>
+                <div class="fx-ctrl">
+                    <label class="fx-lbl" for="fx_volume"><span>Volume</span><span class="fx-val" id="fx_volume_v">75</span></label>
+                    <input type="range" id="fx_volume" min="0" max="100" value="75">
+                </div>
+            </div>
+
+            <div class="fx-card">
+                <div class="fx-ct">EQ &nbsp;<span class="fx-hint">&mdash; 50 = flat</span></div>
+                <div class="fx-ctrl">
+                    <label class="fx-lbl" for="fx_bass"><span>Bass</span><span class="fx-val" id="fx_bass_v">50</span></label>
+                    <input type="range" id="fx_bass" min="0" max="100" value="50">
+                    <div class="fx-flat">&larr; cut &nbsp;&middot;&nbsp; flat &nbsp;&middot;&nbsp; boost &rarr;</div>
+                </div>
+                <div class="fx-ctrl">
+                    <label class="fx-lbl" for="fx_middle"><span>Middle</span><span class="fx-val" id="fx_middle_v">50</span></label>
+                    <input type="range" id="fx_middle" min="0" max="100" value="50">
+                    <div class="fx-flat">&larr; cut &nbsp;&middot;&nbsp; flat &nbsp;&middot;&nbsp; boost &rarr;</div>
+                </div>
+                <div class="fx-ctrl">
+                    <label class="fx-lbl" for="fx_treble"><span>Treble</span><span class="fx-val" id="fx_treble_v">50</span></label>
+                    <input type="range" id="fx_treble" min="0" max="100" value="50">
+                    <div class="fx-flat">&larr; cut &nbsp;&middot;&nbsp; flat &nbsp;&middot;&nbsp; boost &rarr;</div>
+                </div>
+            </div>
+
+            <div class="fx-status">Demo mode &middot; not connected to a guitar</div>
+        </div>
+    </section>
+
+    <section class="container my-5">
+    <h2 class="text-center mb-5">Sub Sections</h2>
+
+    <div class="row align-items-center mb-5">
+        <div class="col-md-5">
+            <img src="assets/images/GuitarPrototypeWiring.jpg" class="img-fluid rounded shadow" alt="Guitar prototype wiring with the ESP32 board, Teensy audio shield, and LiPo battery under the pickguard">
+        </div>
+        <div class="col-md-7">
+            <h3 class="mt-3">Prototype</h3>
+            <p>
+                The prototype fits all of the electronics inside the guitar body: the Teensy 4.1 with its audio shield, an Adafruit HUZZAH32 (ESP32), and a 1S LiPo battery with a charging board, all wired under the pickguard.
+                The Teensy handles the signal processing, while the ESP32 handles Wi-Fi and serves the control page for editing effects.
+                <!-- TODO: more detail on the build -->
+            </p>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5 flex-md-row-reverse">
+        <div class="col-md-5">
+            <img src="assets/images/GuitarFilterBoard.jpg" class="img-fluid rounded shadow" alt="Teensy 4.1 with hand-soldered resistor and capacitor filters">
+        </div>
+        <div class="col-md-7">
+            <h3 class="mt-3">The Day Before the Presentation</h3>
+            <p>
+                The day before the final presentation, the audio shield shorted.
+                With no time to get a replacement, I designed custom analog filters out of just capacitors and resistors and soldered them onto the Teensy, so the <strong>Teensy 4.1</strong> could handle all of the input and output processing itself.
+                <!-- TODO: filter details (cutoff frequencies, topology) -->
+            </p>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5">
+        <div class="col-md-5">
+            <img src="assets/images/GuitarScopeTest.jpg" class="img-fluid rounded shadow" alt="Oscilloscope probes testing the Teensy filter circuit">
+        </div>
+        <div class="col-md-7">
+            <h3 class="mt-3">Testing the Filters</h3>
+            <p>
+                To verify the new filters, I used a wave generator as the input and compared the input and output waves on an oscilloscope.
+                In the clip below, the <strong class="text-primary">blue wave is the input</strong> and the <strong class="text-warning-emphasis">yellow wave is the output</strong>.
+            </p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-10 text-center">
+            <div class="ratio ratio-16x9 shadow rounded">
+                <video controls playsinline preload="metadata">
+                    <source src="assets/videos/GuitarScope.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <p class="text-muted small mt-2 mb-0">Blue: input from the wave generator &middot; Yellow: output from the Teensy</p>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5 flex-md-row-reverse">
+        <div class="col-md-5">
+            <div class="card h-100 shadow-sm text-center">
+                <div class="card-body p-4">
+                    <i class="fas fa-file-pdf fa-3x text-danger mb-3"></i>
+                    <h4>Version 2 Schematic</h4>
+                    <p class="small">Full schematic for the external PCB. Board layout in progress.</p>
+                    <a href="assets/GuitarPCBSchematic.pdf" class="btn btn-outline-dark" target="_blank" rel="noopener noreferrer">Open PDF</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <h3 class="mt-3">Version 2: External PCB</h3>
+            <p>
+                The biggest problem with the prototype was space. Fitting the electronics meant drilling out more room inside the guitar, which I can't do to just any guitar.
+                Version 2 moves everything into an <strong>external device on a custom PCB</strong>, so it works with any electric guitar.
+                You plug the guitar into it, and it can output to standard headphones or to an amp.
+                The schematic is finished and the board layout is in progress.
+            </p>
+            <ul>
+                <li><strong>Audio:</strong> SGTL5000 codec (the same chip as the Teensy audio shield) built onto the board, with its own regulator and ferrite-filtered analog supply.</li>
+                <li><strong>Control:</strong> ESP32-C6 for the Wi-Fi control page, plus three rotary encoder knobs and a screen connector.</li>
+                <li><strong>Power:</strong> Optional 1S LiPo with an MCP73871 charging circuit and a 3.3V regulator.</li>
+                <li><strong>USB-C:</strong> One port with an onboard USB hub, so both the Teensy and the ESP32 can be programmed through the same connector.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- TODO: gallery for any remaining photos -->
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Ty Snyder Robotics</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/tyler-snyder1/" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/tysnyder70/" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/Ty-Snyder" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Guitar FX demo: update the value readout and slider fill (no device connection)
+        document.querySelectorAll('.fx-demo input[type=range]').forEach(function (slider) {
+            var readout = document.getElementById(slider.id + '_v');
+            function update() {
+                readout.textContent = slider.value;
+                slider.style.setProperty('--p', slider.value + '%');
+            }
+            slider.addEventListener('input', update);
+            update();
+        });
+    </script>
+</body>
+</html>

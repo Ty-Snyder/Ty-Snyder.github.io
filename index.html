@@ -13,25 +13,26 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="index.html">Ty Snyder Robotics</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
                 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Projects</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projects</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="projects/gps-rc-car.html">GPS Autonomous RC Car</a></li>
-                        <li><a class="dropdown-item" href="projects/Revit_Addon.html">Revit Addon</a></li>
+                        <li><a class="dropdown-item" href="projects/digital-guitar.html">Digital Electric Guitar</a></li>
                         <li><a class="dropdown-item" href="projects/quadruped_V1.html">Quadruped V1</a></li>
+                        <li><a class="dropdown-item" href="projects/Revit_Addon.html">Revit Addon</a></li>
+                        <li><a class="dropdown-item" href="projects/gps-rc-car.html">GPS Autonomous RC Car</a></li>
                     </ul>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Combat Robotics</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Combat Robotics</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="combat-robots/Malware.html">Malware 30lb</a></li>
                         <li><a class="dropdown-item" href="combat-robots/Executioner.html">Executioner 15lb</a></li>
@@ -53,9 +54,11 @@
                 <div class="col-lg-7 col-md-6 order-2 order-md-1">
                     <div class="hero-text-content">
                         <span class="badge bg-primary mb-2">UC Berkeley '28</span>
+                        <span class="badge bg-danger mb-2">Hardware Intern @ Sunday Robotics, Summer '26</span>
                         <h1 class="display-3 fw-bold mb-3">Ty Snyder</h1>
-                        <h3 class="h2 text-light-opacity mb-3">Mechanical Engineering & <br> Undergraduate Researcher</h3>
-                        <p class="lead mb-4 text-secondary-light">
+                        <h3 class="h2 text-light-opacity mb-2">Data Science & <br> Undergraduate Researcher</h3>
+                        <p class="text-light-opacity mb-3">Minors in Mechanical Engineering & Electronic Intelligent Systems</p>
+                        <p class="lead mb-4 text-light-opacity">
                             I am a Robotics Engineer who loves the entire process. 
                             Whether it’s designing in CAD, wiring a system, or optimizing complex algorithms, I just want to build cool, functional machines. 
                             I’m looking for a role where I can solve hard problems and keep learning.
@@ -101,7 +104,7 @@
                     <div class="p-3 border rounded shadow-sm h-100 skill-box">
                         <i class="fas fa-microchip fa-3x text-success mb-3"></i>
                         <h5 class="fw-bold">Electronics</h5>
-                        <p class="small text-muted mb-0">Micro Controllers, Sensors, Signal Processing, Feedback Controls</p>
+                        <p class="small text-muted mb-0">Microcontrollers, Sensors, Signal Processing, Feedback Controls</p>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
@@ -120,7 +123,24 @@
                 <h2 class="fw-bold mb-0">Featured Projects</h2>
             </div>
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch"> <div class="card h-100 project-card">
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="card h-100 project-card">
+                        <div class="card-header bg-dark text-white fw-bold">
+                            <i class="fas fa-guitar me-2 text-warning"></i>Embedded Audio
+                        </div>
+                        <div class="project-img-container">
+                            <img src="projects/assets/images/GuitarFinished.jpg" alt="Digital Electric Guitar">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Digital Electric Guitar</h5>
+                            <p class="card-text flex-grow-1">
+                                An electric guitar with real-time DSP effects on a Teensy 4.1, editable over Wi-Fi. Version 2 moves the electronics to an external custom PCB.
+                            </p>
+                            <a href="projects/digital-guitar.html" class="btn btn-outline-primary stretched-link mt-3">More Info</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch"> <div class="card h-100 project-card">
                         <div class="card-header bg-dark text-white fw-bold">
                             <i class="fas fa-robot me-2 text-primary"></i>Robotics
                         </div>
@@ -132,11 +152,27 @@
                             <h5 class="card-title fw-bold">Quadruped V1 & V2</h5>
                             <p class="card-text flex-grow-1"> A fully custom robot dog exploring inverse kinematics. V1 completed in 2024. V2 currently in development with improved gait planning and feedback systems.
                             </p>
-                            <a href="projects/quadruped_V1.html" class="btn btn-outline-primary stretched-link mt-3">View V1 info</a>
+                            <a href="projects/quadruped_V1.html" class="btn btn-outline-primary stretched-link mt-3">View V1 Info</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch"> <div class="card h-100 project-card">
+                        <div class="card-header bg-dark text-white fw-bold">
+                            <i class="fas fa-laptop-code me-2 text-danger"></i>Software
+                        </div>
+                        <div class="project-img-container">
+                            <img src="projects/assets/images/RevitCode.png" alt="Revit API Code">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Revit Automation Addon</h5>
+                            <p class="card-text flex-grow-1">
+                                A C# application built using the Revit API to automate repetitive BIM modeling tasks, significantly increasing engineering drawing efficiency.
+                            </p>
+                            <a href="projects/Revit_Addon.html" class="btn btn-outline-primary stretched-link mt-3">More Info</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
                     <div class="card h-100 project-card">
                         <div class="card-header bg-dark text-white fw-bold">
                             <i class="fas fa-satellite-dish me-2 text-success"></i>Automation
@@ -153,38 +189,40 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch offset-md-3 offset-lg-0"> <div class="card h-100 project-card">
-                        <div class="card-header bg-dark text-white fw-bold">
-                            <i class="fas fa-laptop-code me-2 text-danger"></i>Software
-                        </div>
-                        <div class="project-img-container">
-                            <img src="projects/assets/images/RevitCode.png" alt="Revit API Code">
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title fw-bold">Revit Automation Addon</h5>
-                            <p class="card-text flex-grow-1">
-                                A C# application built using the Revit API to automate repetitive BIM modeling tasks, significantly increasing engineering drawing efficiency.
-                            </p>
-                            <a href="projects/Revit_Addon.html" class="btn btn-outline-primary stretched-link mt-3">More info</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <section id="research" class="py-5 bg-light">
+    <section id="research" class="py-5 bg-white">
         <div class="container">
             <h2 class="fw-bold mb-5 text-center">Research & Professional Experience</h2>
             
             <div class="row g-4">
-                <div class="col-md-6">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-industry fa-2x text-danger me-3"></i>
+                                <div>
+                                    <h4 class="card-title fw-bold mb-0">Sunday Robotics</h4>
+                                    <small class="text-muted">Hardware Engineering Intern | Jun 2026 - Aug 2026</small>
+                                </div>
+                            </div>
+                            <p class="card-text">
+                                Built an <strong>actuator IQC rig</strong> to flash and validate 20 actuators at once,
+                                designed jigs to center the wheels, and carried out <strong>full-fleet hardware upgrades</strong> to improve reliability.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
                     <div class="card border-0 shadow-sm h-100">
                         <div class="card-body p-4">
                             <div class="d-flex align-items-center mb-3">
                                 <i class="fas fa-flask fa-2x text-primary me-3"></i>
                                 <div>
-                                    <h4 class="card-title fw-bold mb-0">Open Cal Research Lab</h4>
+                                    <h4 class="card-title fw-bold mb-0">OpenCal Research Lab</h4>
                                     <small class="text-muted">Undergraduate Researcher | Aug 2025 - Present</small>
                                 </div>
                             </div>
@@ -196,19 +234,19 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-6 col-lg-4">
                     <div class="card border-0 shadow-sm h-100">
                         <div class="card-body p-4">
                             <div class="d-flex align-items-center mb-3">
                                 <i class="fas fa-building fa-2x text-dark me-3"></i>
                                 <div>
                                     <h4 class="card-title fw-bold mb-0">Intech Mechanical</h4>
-                                    <small class="text-muted">BIM Intern & Addon Programmer | Jan 2023 - Aug 2025</small>
+                                    <small class="text-muted">BIM Intern & Addon Programmer | Jan 2023 - May 2026</small>
                                 </div>
                             </div>
                             <p class="card-text">
-                                Solo developed a custom <strong>C# Addon</strong> to automate Revit modeling tasks. 
-                                While Collaborating with a team of 9 to model complex HVAC systems and delivered detailed shop drawings for construction.
+                                Developed a custom <strong>C# Addon</strong> to automate Revit modeling tasks 
+                                while collaborating with a team of 9 to model complex HVAC systems and deliver detailed shop drawings for construction.
                             </p>
                         </div>
                     </div>
@@ -217,7 +255,7 @@
         </div>
     </section>
 
-    <section class="py-5 bg-white border-bottom">
+    <section class="py-5 bg-light border-bottom">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -225,7 +263,7 @@
                     
                     <p class="mb-0 core-principles-text">
                         I actively seek out projects that push me out of my comfort zone, but I do so strategically. 
-                        My approach is to find a balance between the <strong>known</strong> and the <strong>unknown</strong> using 
+                        My approach is to find a balance between the <strong>known</strong> and the <strong>unknown</strong>, using 
                         skills I’ve mastered to anchor myself while diving headfirst into completely new challenges. 
                         This allows me to tackle complex problems without being overwhelmed. 
                         <br><br>
@@ -247,10 +285,10 @@
                 
                 <div class="col-lg-9 col-md-12 mb-5 mb-lg-0"> 
                     
-                    <span class="text-danger fw-bold text-uppercase ls-1">Project Manager @ Combat Robotics at Berkeley</span>
+                    <span class="text-danger fw-bold text-uppercase ls-1">President @ Combat Robotics at Berkeley</span>
                     <h2 class="display-5 fw-bold mt-2">Combat Robotics</h2>
-                    <p class="lead text-light-opacity mb-5" style="max-width: 90%;"> I manage budget allocation, timelines, and manufacturing for the team. 
-                        Personally designing <strong>Malware (30lb)</strong> and <strong>Executioner (15lb)</strong>.
+                    <p class="lead text-light-opacity mb-5" style="max-width: 90%;"> As President, I manage a <strong>$45k budget</strong> and timelines to keep 120+ members on track for 6+ competitions. 
+                        I have also designed my own bots, including <strong>Malware (30lb)</strong> and <strong>Executioner (15lb)</strong>.
                     </p>
 
                     <div class="row g-4">
@@ -289,15 +327,43 @@
                 </div>
 
             </div>
-        </div> 
+        </div>
     </section>
+
+    <section class="py-5 bg-dark text-body earlier-work" data-bs-theme="dark">
+        <div class="container">
+            <h2 class="fw-bold mb-4 text-center">Earlier Work</h2>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card border-0 bg-body-tertiary">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-school fa-2x text-warning me-3"></i>
+                                <div>
+                                    <h4 class="card-title fw-bold mb-0">VEX Robotics Team 2112A</h4>
+                                    <small class="text-muted">Founder & Captain, West Park High School | 2021 - 2024</small>
+                                </div>
+                            </div>
+                            <p class="card-text">
+                                Founded West Park High School's VEX Robotics team and led it for three years.
+                                One of our strongest robots used a <strong>double reverse four-bar lift</strong> with an extra stage for more height,
+                                and <strong>pneumatic flaps</strong> that widened the front of the robot.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
             <p>&copy; 2026 Ty Snyder Robotics</p>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/tyler-snyder1/" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/tysnyder70/" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="https://github.com/Ty-Snyder" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/tyler-snyder1/" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/tysnyder70/" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/Ty-Snyder" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </footer>
